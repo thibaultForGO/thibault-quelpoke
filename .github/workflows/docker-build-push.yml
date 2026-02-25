@@ -23,6 +23,12 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
 
+      - name: GCLOUD Auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          
+          
       - name: Build Docker Image on GCLOUD
         uses: google-github-actions/setup-gcloud@v2
         with:
