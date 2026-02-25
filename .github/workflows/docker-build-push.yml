@@ -24,10 +24,10 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
 
       - name: Build Docker Image on GCLOUD
-        uses: docker/docker-cloud-build@v2.0.0
+        uses: google-github-actions/setup-gcloud@v2
         with:
           gcp-project-id: cs-poc-hpzdycpiqjyvinhrczvlwcn 
           gcp-service-account-key: ${{ secrets.GCP_SA_KEY }}
-          gcp-registry-repository: student-thibault
+          gcp-registry-repository: europe-west9-docker.pkg.dev/cs-poc-hpzdycpiqjyvinhrczvlwcn/student-thibault
           image-name: latest
           image-sources: quelpoke
