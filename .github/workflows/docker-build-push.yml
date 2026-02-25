@@ -30,4 +30,4 @@ jobs:
           gcp-service-account-key: ${{ secrets.GCP_SA_KEY }}
           gcp-registry-repository: student-thibault
           image-name: latest
-          image-sources: *
+          image-sources: quelpoke
