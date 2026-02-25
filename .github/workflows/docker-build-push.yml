@@ -1,4 +1,4 @@
-name: Build & Push Docker Image to GCP
+name: Build & Push Docker Image
 
 on:
   push:
@@ -10,15 +10,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: quelpoke
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
 
-      - name: Build and push to Google Container Registry
-        run: |
-          gcloud auth configure-docker
-          gcloud builds submit --tag europe-west1-docker.pkg.dev/cs-poc-hpzdycpiqjyvinhrczvlwcn/student-thibault/latest:latest quelpoke
+      - name: Build Docker Image on GCLOUD
+        uses: docker/docker-cloud-build@v2.0.0
+        with:
+          gcp-project-id: cs-poc-hpzdycpiqjyvinhrczvlwcn 
+          gcp-service-account-key: ${{ secrets.GCP_SA_KEY }}
+          gcp-registry-repository: student-thibault
+          image-name: latest
+          image-sources: quelpoke
