@@ -33,3 +33,6 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id : cs-poc-hpzdycpiqjyvinhrczvlwcn
+          
+      - name: Build and push to GCP
+      run: gcloud builds submit --tag europe-west1-docker.pkg.dev/cs-poc-hpzdycpiqjyvinhrczvlwcn/student-thibault/latest:latest quelpoke
