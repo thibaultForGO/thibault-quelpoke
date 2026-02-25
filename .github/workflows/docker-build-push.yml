@@ -22,3 +22,12 @@ jobs:
           context: quelpoke
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/test:latest
+
+      - name: Build Docker Image on GCLOUD
+        uses: docker/docker-cloud-build@v2.0.0
+        with:
+          gcp-project-id: cs-poc-hpzdycpiqjyvinhrczvlwcn 
+          gcp-service-account-key: ${{ secrets.GCP_SA_KEY }}
+          gcp-registry-repository: student-thibault
+          image-name: latest
+          image-sources: *
