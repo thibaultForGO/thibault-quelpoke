@@ -34,7 +34,7 @@ jobs:
         with:
           project_id : cs-poc-hpzdycpiqjyvinhrczvlwcn
         
-        run: gcloud builds submit --tag europe-west1-docker.pkg.dev/cs-poc-hpzdycpiqjyvinhrczvlwcn/student-thibault/latest:latest quelpoke
+      - run: gcloud builds submit --tag europe-west1-docker.pkg.dev/cs-poc-hpzdycpiqjyvinhrczvlwcn/student-thibault/latest:latest quelpoke
 
       
         
