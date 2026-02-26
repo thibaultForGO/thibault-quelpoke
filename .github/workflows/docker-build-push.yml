@@ -34,9 +34,7 @@ jobs:
         with:
           project_id : cs-poc-hpzdycpiqjyvinhrczvlwcn
         
-      - run: gcloud auth configure-docker europe-west1-docker.pkg.dev/cs-poc-hpzdycpiqjyvinhrczvlwcn/student-thibault/latest:latest quelpoke
-
-      
+      - run: gcloud auth configure-docker europe-west1-docker.pkg.dev
         
       
         
