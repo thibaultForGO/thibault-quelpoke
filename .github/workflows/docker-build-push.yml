@@ -34,7 +34,7 @@ jobs:
         with:
           project_id : cs-poc-hpzdycpiqjyvinhrczvlwcn
         
-      - run: gcloud auth configure-docker europe-west1-docker.pkg.dev
+      - run: gcloud auth configure-docker europe-west9-docker.pkg.dev
 
       - name: push GCLOUD
         uses: docker/build-push-action@v5
